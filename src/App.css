@@ -3,3 +3,8 @@ body {
 	font-weight: 400;
 	padding: 1.5rem 4rem;
 }
+
+a {
+	text-decoration: none;
+	color: black;
+}
