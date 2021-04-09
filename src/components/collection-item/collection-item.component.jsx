@@ -21,7 +21,13 @@ export const CollectionItem = connect(
 				<span className="name">{name}</span>
 				<span className="price">${price}</span>
 			</div>
-			<CustomButton onClick={() => addItem(item)} inverted backdropBlur shadow>
+			<CustomButton
+				className="custom-button"
+				onClick={() => addItem(item)}
+				inverted
+				backdropBlur
+				shadow
+			>
 				Add to cart
 			</CustomButton>
 		</div>
