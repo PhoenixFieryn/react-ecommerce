@@ -1,0 +1,25 @@
+[33m70b297b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Implement HOC spinner, and pulls data from firestore
+[33m6570f04[m[33m ([m[1;31mheroku/main[m[33m)[m Reverted return statement in CustomButton component
+[33m2542a2c[m Changed custom button to styled components
+[33maaa6cdf[m Remove redux logger from production build
+[33m86e77be[m Updated stripe integration, updated favicon
+[33m0e74780[m Moved directory and shop data into its own reducer, created respective selectos and updated corresponding components for directory and shop
+[33mc00ce7b[m added additem and removeitem functionality to checkout item component
+[33m68e618d[m Added checkout page and checkout item component, updated cart to use selectors from reselect
+[33m30300d5[m updated app with reselect, replaced cart selectors with memoized selectors
+[33m58e3381[m Created cart item component and added them to dropdown
+[33m8636d87[m Made cart utils to group items in cart reducer
+[33m06aa095[m Added cartIcon and cartDropdown components to application, implemented cart reducer
+[33m3794754[m Updating app to redirect to home if user is signed in
+[33m803a090[m Added Redux and implemented user reducer and user actions to header and app components
+[33m9d0a420[m Sign in with email and passsword
+[33m3fc69eb[m User signup with email and password
+[33m1dd33e6[m Integrated firebase and added Sign in buttons
+[33m0f772e4[m Added basic firebase
+[33m77fa1d1[m Added header components and links
+[33m471d899[m Updated app page with shop page, collection preview component, and collection item component
+[33m84452f5[m Updated menu-items to navigate withRouter HOC
+[33m2816bf6[m updated component styles
+[33m4ee0083[m Converted homepage into components
+[33m5c77b1c[m Initialization
+[33m6183e3c[m Initial commit
