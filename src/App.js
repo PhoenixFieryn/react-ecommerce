@@ -21,10 +21,6 @@ class App extends Component {
 		checkUserSession();
 	}
 
-	// componentWillUnmount() {
-	// 	this.unsubscribeFromAuth();
-	// }
-
 	render() {
 		return (
 			<div>
