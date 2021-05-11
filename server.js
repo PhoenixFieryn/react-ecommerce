@@ -29,14 +29,16 @@ if (process.env.NODE_ENV === 'production') {
 	});
 }
 
-app.post('/payments', (req, res, next) => {
+app.post('/payment', (req, res, next) => {
 	const body = {
 		source: req.body.token.id,
 		amount: req.body.amount,
 		currency: 'usd',
 	};
 
-	stripe.charges.create(body, (stripeErr, stripeRes) => {
+	console.log(body);
+
+	tripe.charges.create(body, (stripeErr, stripeRes) => {
 		if (stripeErr) {
 			res.status(500).json({ error: stripeErr });
 		} else {
