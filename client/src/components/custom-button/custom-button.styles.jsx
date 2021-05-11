@@ -1,23 +1,23 @@
 import styled, { css } from 'styled-components';
 
 const buttonStyles = css`
-	background-color: black;
+	background-color: rgba(0, 0, 0, 1);
 	color: white;
 	border: none;
 
 	&:hover {
-		background-color: white;
+		background-color: rgba(255, 255, 255, 1);
 		color: black;
 		border: 1px solid black;
 	}
 `;
 
 const invertedButtonStyles = css`
-	background-color: white;
+	background-color: rgba(255, 255, 255, 1);
 	color: black;
 
 	&:hover {
-		background-color: black;
+		background-color: rgba(0, 0, 0, 1);
 		color: white;
 		border: none;
 	}
@@ -49,8 +49,10 @@ const googleSignInStyles = css`
 `;
 
 const backdropBlurStyles = css`
-	-webkit-backdrop-filter: saturate(1.8) blur(10px);
-	backdrop-filter: saturate(1.8) blur(10px);
+	@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+		-webkit-backdrop-filter: saturate(1.8) blur(10px);
+		backdrop-filter: saturate(1.8) blur(10px);
+	}
 `;
 
 const getGoogleSignInStyles = (props) => {
