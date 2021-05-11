@@ -11,18 +11,24 @@ import {
 	signUpFailure,
 } from './user.actions';
 
-import {
-	auth,
-	googleProvider,
-	createUserProfileDocument,
-	getCurrentUser,
-} from '../../firebase/firebase.utils';
+import { auth, googleProvider, getCurrentUser } from '../../firebase/firebase.utils';
 
 export function* getSnapshotFromUserAuth(userAuth) {
 	try {
-		const userRef = yield call(createUserProfileDocument, userAuth);
-		const userSnapshot = yield userRef.get();
-		yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
+		const response = yield call(
+			fetch,
+			'http://localhost:3001/firebase/snapshot-from-userauth',
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ userAuth }),
+			}
+		);
+		const responseBody = yield response.json();
+		const { userSnapshot } = responseBody;
+		yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot }));
 	} catch (error) {
 		yield put(signInFailure(error));
 	}
@@ -39,7 +45,17 @@ export function* signInWithGoogle() {
 
 export function* signInWithEmail({ payload: { email, password } }) {
 	try {
-		const { user } = yield auth.signInWithEmailAndPassword(email, password);
+		const response = yield call(
+			fetch,
+			'http://localhost:3001/firebase/sign-in-with-email-and-password',
+			{
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email, password }),
+			}
+		);
+		const responseBody = yield response.json();
+		const { user } = responseBody;
 		yield getSnapshotFromUserAuth(user);
 	} catch (error) {
 		yield put(signInFailure(error));
@@ -67,9 +83,19 @@ export function* signOut() {
 
 export function* signUp({ payload: { displayName, email, password } }) {
 	try {
-		const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-		yield createUserProfileDocument(user, { displayName });
-		yield put(signUpSuccess({ email, password }));
+		const response = yield call(fetch, 'http://localhost:3001/firebase/signup', {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ displayName, email, password }),
+		});
+		if (response.status === 500) {
+			const responseBody = yield response.json();
+			console.log(response.statusText, responseBody);
+		} else {
+			yield put(signUpSuccess({ email, password }));
+		}
 	} catch (error) {
 		yield put(signUpFailure(error));
 	}
