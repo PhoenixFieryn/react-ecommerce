@@ -56,6 +56,6 @@ app.use((error, req, res, next) => {
 });
 
 app.listen(port, (error) => {
-	if (err) throw error;
+	if (error) throw error;
 	console.log(`Server running on ${port}`);
 });
