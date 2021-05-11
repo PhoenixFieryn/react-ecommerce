@@ -19,4 +19,21 @@ export const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
+
+    .screenreader-text {
+        position: absolute;
+        left: -999px;
+        width:1px;
+        height: 1px;
+        top: auto;
+
+        &:focus {
+            color: $background-color;
+            display: inline-block;
+            height: auto;
+            width: auto;
+            position: static;
+            margin: auto;
+        }
+    }
 `;

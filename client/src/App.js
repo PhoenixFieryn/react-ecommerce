@@ -22,8 +22,11 @@ const App = ({ checkUserSession, currentUser }) => {
 	return (
 		<div>
 			<GlobalStyle />
+			<a id="skip-link" className="screenreader-text" href="#main-content">
+				Skip Navigation or Skip to Content
+			</a>
 			<Header />
-			<Switch>
+			<Switch id="main-content">
 				<Route exact path="/" component={HomePage} />
 				<Route path="/shop" component={ShopPage} />
 				<Route exact path="/checkout" component={CheckoutPage} />
