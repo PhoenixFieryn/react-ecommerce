@@ -3,13 +3,12 @@ import styled from 'styled-components';
 export const MenuItemContainer = styled.div`
 	height: ${({ size }) => (size ? '380px' : '240px')};
 	min-width: 30%;
+	overflow: hidden;
 	flex: 1 1 auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 0px 6px 8px -2px rgba(0, 0, 0, 0.2);
 	margin: 0 7.5px 15px;
-	overflow: hidden;
 	transition: box-shadow 0.4s ease-in-out;
 
 	&:hover {
@@ -39,6 +38,10 @@ export const MenuItemContainer = styled.div`
 			-webkit-backdrop-filter: saturate(1.8) blur(20px);
 			backdrop-filter: saturate(1.8) blur(20px);
 		}
+	}
+
+	@media screen and (max-width: 800px) {
+		height: 200px;
 	}
 `;
 
