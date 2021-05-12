@@ -89,7 +89,7 @@ export const CustomButtonContainer = styled.button`
 	height: 50px;
 	letter-spacing: 0.5px;
 	line-height: 50px;
-	padding: 0 35px 0 35px;
+	padding: 0 1.5rem;
 	font-size: 15px;
 	text-transform: uppercase;
 	font-family: 'Montserrat';
