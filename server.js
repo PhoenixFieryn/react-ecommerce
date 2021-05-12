@@ -2,6 +2,7 @@ const path = require('path');
 
 const express = require('express');
 const compression = require('compression');
+const enforce = require('express-sslify');
 
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
@@ -10,6 +11,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(express.json());
 app.use(compression());
 
@@ -55,6 +57,10 @@ app.use((error, req, res, next) => {
 	const message = error.message;
 	const data = error.data;
 	res.status(status).json({ message: message, data: data });
+});
+
+app.get('/service-worker.js', (req, res, next) => {
+	res.sendFile(path.resolve(__dirname, '../', 'build', 'service-worker.js'));
 });
 
 app.listen(port, (error) => {
